@@ -1,0 +1,195 @@
+#chat-screen {
+  background-color: #abc1d1;
+  height: 500vh;
+}
+
+#chat-screen .alt-header,
+#chat-screen .status-bar {
+  top: 0;
+  position: fixed;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #abc1d1;
+}
+#chat-screen .alt-header {
+  top: 10px;
+  z-index: 1;
+}
+#chat-screen .status-bar {
+  z-index: 2;
+}
+@keyframes fadeIn {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+.main-chat {
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 0.8s linear;
+}
+.chat_timestamp {
+  color: white;
+  background-color: #92a4b2;
+  padding: 15px;
+  border-radius: 25px;
+  margin-bottom: 20px;
+}
+.message-row {
+  width: 100%;
+  display: flex;
+  margin-bottom: 25px;
+}
+.message-row img {
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.message_author {
+  font-size: 18px;
+  opacity: 0.7;
+  display: block;
+  margin-bottom: 7px;
+}
+.message_info {
+  display: flex;
+  align-items: flex-end;
+}
+.message_bubble {
+  background-color: white;
+  padding: 8px 12px;
+  border-radius: 15px;
+  border-top-left-radius: 0px;
+  margin-right: 5px;
+}
+.message_time {
+  opacity: 0.7;
+  font-size: 13px;
+}
+.message-row--own {
+  justify-content: flex-end;
+}
+.message_me {
+  background-color: rgb(255, 230, 0);
+  border-radius: 15px;
+  border-top-right-radius: 0px;
+  margin-left: 5px;
+}
+.reply {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  background-color: white;
+  justify-content: space-between;
+  padding: 10px 25px;
+  box-sizing: border-box;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+.reply .reply_column:first-child {
+  width: 10%;
+}
+.reply .reply_column:last-child {
+  width: 90%;
+}
+.reply input {
+  padding: 10px;
+  height: 30px;
+  width: 100%;
+  border: var(--main-border);
+  border-radius: 20px;
+  transition: all 0.3s ease-in-out;
+}
+.reply_column {
+  position: relative;
+}
+
+.reply i {
+  opacity: 0.5;
+}
+.reply_column button i {
+  opacity: 1;
+}
+.reply_column:last-child > i,
+.reply_column:last-child button {
+  position: absolute;
+  right: 0;
+  top: 7px;
+}
+.reply_column:last-child > i {
+  right: 40px;
+  top: 12px;
+}
+.reply_column:last-child button {
+  background-color: rgb(255, 230, 0);
+  border: none;
+  width: 40px;
+  height: 40px;
+  right: -10px;
+  border-radius: 50%;
+}
+.reply_column button :focus,
+.reply_column button :active {
+  outline: none;
+}
+
+@keyframes hideSplashScreen {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+#splash-screen {
+  background-color: rgb(255, 230, 0);
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+  animation: hideSplashScreen 2s ease-in-out forwards;
+}
+/* 원래 애니메이션 효과는 다 하고 처음 상태로
+돌아간다. 애니메이션 마지막효과를 계속 지속하고 싶으면
+forwards 라는 단어를 쓰면 된다!
+하지만 말그대로 투명도 100이기때문에 그위에 아직
+있는데 투명한거야 여전히 브라우저에 남아있어
+그래서 다른 기능을 못해 
+그래서 쓰는게 visibility : hidden
+이것도 여전히 브라우저에 남아있지만 다른기능을 할수있어 */
+.reply .reply_column:first-child,
+.reply .fa-smile-wink,
+.reply button {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.reply:focus-within .reply_column:first-child,
+.reply:focus-within .fa-smile-wink,
+.reply:focus-within button {
+  opacity: 0.1;
+}
+
+/*
+focus-within은 reply 내부에 focus된 element가 있는지 보여주는것
+*/
+.reply input:focus {
+  width: 95vw;
+  transform: translateX(-12%) translateY(-80px);
+}
+.reply:focus-within {
+  transform: translateY(80px);
+}
